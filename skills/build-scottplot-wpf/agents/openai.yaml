@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build ScottPlot WPF"
+  short_description: "Build DPI-correct interactive ScottPlot WPF charts"
+  default_prompt: "Use $build-scottplot-wpf to implement a DPI-correct interactive ScottPlot chart in this WPF application."
