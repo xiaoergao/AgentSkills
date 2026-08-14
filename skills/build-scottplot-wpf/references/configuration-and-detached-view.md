@@ -139,6 +139,8 @@ Verify every semantic chart key independently:
 | X-only wheel | Y limits and auto-Y remain unchanged |
 | Y-only wheel | X limits and auto-X remain unchanged |
 | Disabled wheel | Neither axis changes and default ScottPlot zoom does not run |
+| Restore explicit range | Last manually saved range wins and survives refresh |
+| Restore fallback range | Fixed profile limits apply when no explicit range exists |
 | Live refresh under stationary pointer | Coordinate overlay remains visible without flashing |
 | Chinese title | Embedded and detached title glyphs render correctly |
 | Detached snapshot | Main live refresh does not move the selected data |

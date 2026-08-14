@@ -8,7 +8,7 @@
 - Continuous autoscale modes
 - Double-click and benchmark behavior
 - Custom right-click menu
-- Manual ranges and persistence
+- Manual and restorable ranges
 - Interaction test matrix
 
 ## Own axis state
@@ -29,12 +29,13 @@ Distinguish these operations:
 - Continuous X autoscale on new data
 - Continuous Y autoscale on new data
 - Manual limits
+- Restore saved XY limits
 
-Do not use one boolean for all six behaviors.
+Do not use one boolean for all seven behaviors.
 
 ## Preserve limits during data refresh
 
-An unconditional `Axes.AutoScale()` after every `Plot.Clear()` causes wheel zoom, pan, and manual limits to snap back on the next live update.
+An unconditional `Axes.AutoScale()` after every `Plot.Clear()` causes wheel zoom, pan, manual limits, and restored limits to snap back on the next live update.
 
 Snapshot limits before rebuilding, add the data, then apply each axis policy independently:
 
@@ -101,7 +102,8 @@ Disable continuous modes after:
 - mouse wheel zoom;
 - a detected drag pan, not merely a single click;
 - one-shot autoscale;
-- accepted manual XY limits.
+- accepted manual XY limits;
+- range restore.
 
 Detect drag using `SystemParameters.MinimumHorizontalDragDistance` and `MinimumVerticalDragDistance` so clicking to inspect a point does not unexpectedly disable autoscale.
 
@@ -136,12 +138,13 @@ Create a WPF `ContextMenu` owned by the wrapper control with these common action
 4. Toggle continuous X autoscale
 5. Toggle continuous Y autoscale
 6. Enter manual XY limits
+7. Restore saved XY limits
 
 Intercept `PreviewMouseRightButtonDown` and `PreviewMouseRightButtonUp`, mark both handled, and open the custom menu at `PlacementMode.MousePoint`. This suppresses ScottPlot's built-in menu without disabling wheel or left-drag interactivity.
 
 If the pinned ScottPlot version still displays both menus, inspect its public `UserInputProcessor` response collection and remove only the context-menu response supported by that version. Do not clear all responses because that also removes pan and wheel zoom.
 
-## Manual ranges and persistence
+## Manual and restorable ranges
 
 Accept four finite numbers and require:
 
@@ -163,6 +166,16 @@ Right.Captured
 
 Write settings atomically using a partial file, flush, then replace/move. After the user accepts the dialog, disable continuous autoscale, call `SetLimitsX()` and `SetLimitsY()`, refresh, and persist the range.
 
+If both a configuration page and a right-click manual-range command exist, make restore precedence explicit:
+
+1. Save the right-click range as the last explicitly chosen range for that chart.
+2. On restore, load the explicit range first.
+3. If absent, fall back to the chart profile's persisted fixed limits.
+4. If neither exists or validates, report that no restorable range exists.
+5. Disable continuous X/Y, apply both axes, clear any pending configuration-application flag, mark limits initialized, synchronize the configuration object, persist it if required, and refresh once.
+
+Never autoscale immediately after restoring a range.
+
 Treat a missing, unknown-schema, or malformed settings file as “no saved range” rather than crashing the chart.
 
 ## Interaction test matrix
@@ -179,6 +192,8 @@ Run these checks with live data still updating:
 | Enable auto X | Follows new data | Preserved/manual | X on, Y unchanged |
 | Enable auto Y | Preserved/manual | Follows new data | Y on, X unchanged |
 | Enter manual XY | Entered limits | Entered limits | Off |
+| Restore explicit XY | Last manual limits | Last manual limits | Off |
+| Restore fallback XY | Configured limits | Configured limits | Off |
 | Double-click | Fits data | Fits data | Off |
 
 Record numeric limits before and after X-only and Y-only operations; do not rely only on visual inspection.
