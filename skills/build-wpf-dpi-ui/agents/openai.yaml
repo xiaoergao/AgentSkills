@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build WPF DPI UI"
+  short_description: "Build readable DPI-correct WPF interfaces"
+  default_prompt: "Use $build-wpf-dpi-ui to audit and implement the font hierarchy and DPI behavior for this WPF interface."
