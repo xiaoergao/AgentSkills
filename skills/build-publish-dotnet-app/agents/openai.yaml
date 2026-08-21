@@ -1,0 +1,4 @@
+interface:
+  display_name: ".NET App Build and Publish"
+  short_description: "Build, test, publish, and verify .NET applications"
+  default_prompt: "Use $build-publish-dotnet-app to build, test, publish, and verify a deliverable .NET application."
