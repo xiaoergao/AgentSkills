@@ -17,7 +17,7 @@ Treat the repository as the authority for product boundaries, commands, target f
    - Use the product solution or product script for a deliverable. Use a workspace solution only when repository guidance defines it as the delivery entry point or when an integration check is explicitly required.
    - Do not build or publish an unrelated product merely because it shares the workspace.
 3. Keep outputs isolated.
-   - Send publish output, test results, logs, temporary staging directories, and caches to the owning product's ignored artifact tree.
+   - Send outputs to the owning product's designated ignored roots. Respect an adopted split such as root `temp` for build/test/cache/staging and `artifacts/app` for delivery/runtime state; do not collapse it into a single `artifacts` tree.
    - Do not create ad hoc projects, `bin`, `obj`, publish folders, or test results beside source files.
 4. Execute the repository pipeline in order.
    - Run the repository-owned build script first when it restores dependencies or builds native prerequisites.
@@ -25,10 +25,10 @@ Treat the repository as the authority for product boundaries, commands, target f
    - Publish in `Release` unless the repository or user explicitly requires another configuration.
    - Avoid concurrent commands that write the same `obj`, output, cache, or fixed publish directory.
 5. Publish transactionally when replacing a fixed delivery directory.
-   - Publish to a unique staging directory under the artifact root.
+   - Publish to a unique staging directory under the repository-designated temporary output root.
    - Validate the staged entry point and required managed/native dependencies.
-   - Check whether the current delivery directory is replaceable, retain it until staging passes, then swap directories and restore the prior directory if replacement fails.
-   - Delete only verified generated directories contained by the intended artifact root.
+   - Check whether the current delivery directory is replaceable, retain it until staging passes, preserve any runtime state, then swap directories and restore the prior directory if replacement fails.
+   - Delete only verified generated directories contained by the intended output root; its name alone does not establish that its contents are disposable.
 6. Verify the deliverable.
    - Read [references/publish-verification.md](references/publish-verification.md) and apply the relevant checks.
    - Launch desktop applications or run service/console smoke checks when safe and supported. Do not substitute a successful compile for runtime verification.
