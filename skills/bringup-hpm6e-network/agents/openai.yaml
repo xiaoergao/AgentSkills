@@ -1,0 +1,4 @@
+interface:
+  display_name: "HPM6E 网络联调"
+  short_description: "排查 HPM6E TSW、USB 虚拟网卡及千兆协商，保留证据和适用边界"
+  default_prompt: "使用 $bringup-hpm6e-network 核对本板适用条件，排查 USB/ETH 接收和协商问题，并提供实测证据及未验证项。"

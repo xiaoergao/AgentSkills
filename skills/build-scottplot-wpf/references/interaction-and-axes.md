@@ -1,5 +1,9 @@
 # Interaction and Axes
 
+## Scope
+
+Inherits [build-scottplot-wpf](../SKILL.md). All examples concern ScottPlot 5 WPF axis state and input handlers, with API names checked against the target version. Excludes other chart libraries and does not force a gesture policy where the product already specifies a different one; single-axis and restore invariants need target regression tests.
+
 ## Contents
 
 - Own axis state

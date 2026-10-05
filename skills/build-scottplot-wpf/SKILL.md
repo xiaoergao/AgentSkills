@@ -5,6 +5,10 @@ description: Build and troubleshoot configurable interactive ScottPlot 5 charts 
 
 # Build ScottPlot WPF
 
+## Scope
+
+Applies to Windows WPF with ScottPlot 5 / ScottPlot.WPF and its compatible SkiaSharp dependencies. All rules below inherit this scope; verify named APIs and DPI behavior against the pinned package version. Excludes ScottPlot 4, other UI frameworks and other plotting libraries. Referenced package versions, gesture policies and data volumes are examples, not mandatory upgrades or evidence of performance on another machine.
+
 Implement ScottPlot as an isolated WPF control. Preserve normal WPF styling, explicitly own axis state, and verify interactions against the pinned ScottPlot version.
 
 ## Workflow

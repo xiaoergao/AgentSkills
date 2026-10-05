@@ -5,6 +5,10 @@ description: Build, audit, and troubleshoot readable high-DPI WPF interfaces wit
 
 # Build WPF DPI UI
 
+## Scope
+
+Applies to Windows WPF XAML layouts and explicitly identified physical-pixel rendering boundaries. Guidance below inherits this scope; library-specific examples require the target library/version to match. Excludes WebView2 CSS/DOM, WinForms, MAUI and application-wide DPI changes justified only by one canvas. Font sizes in references are audited examples, not universal UI requirements; validate on the target displays and dependencies.
+
 ## Overview
 
 Use this skill to keep a WPF application's typography and layout readable across monitor scales without double-scaling the standard WPF UI. Treat embedded physical-pixel canvases as explicit DPI boundaries and compensate only at those boundaries.

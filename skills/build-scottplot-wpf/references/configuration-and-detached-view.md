@@ -1,5 +1,9 @@
 # Configuration and Detached View
 
+## Scope
+
+Inherits [build-scottplot-wpf](../SKILL.md). Applies to per-chart settings and optional detached analysis windows in ScottPlot 5 WPF products. Every feature below is conditional on the requested product behavior; it does not require adding a detached view, replacing a persistence architecture or changing another chart library. Validate APIs, snapshot ownership and DPI in the target project.
+
 ## Contents
 
 - Per-chart configuration model

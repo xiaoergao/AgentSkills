@@ -1,5 +1,9 @@
 # DPI boundaries for WPF and physical-pixel canvases
 
+## Scope
+
+Inherits [build-wpf-dpi-ui](../SKILL.md). The table and examples apply to Windows WPF DIPs crossing a renderer that consumes physical pixels; verify each renderer's version and coordinate contract. They do not prescribe CSS scaling, global DPI changes or an extra scale factor for a canvas that already handles it internally.
+
 ## Coordinate-space decision table
 
 | Value or operation | Coordinate space | Apply display scale? |

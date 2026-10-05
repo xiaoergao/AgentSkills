@@ -1,5 +1,9 @@
 # .NET publish verification
 
+## Scope
+
+Inherits [build-publish-dotnet-app](../SKILL.md): SDK-style .NET applications, with checks selected for their actual deployment model. Applies to every checklist item below. Excludes non-.NET and NuGet publishing; desktop launch, native dependencies and clean-machine checks are conditional, not claims of completed validation.
+
 Use only the checks relevant to the application's delivery model.
 
 ## Build and test evidence

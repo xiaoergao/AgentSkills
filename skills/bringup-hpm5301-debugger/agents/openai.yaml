@@ -1,0 +1,4 @@
+interface:
+  display_name: "HPM5301 板载调试器"
+  short_description: "核对 HPM5301 首次 ISP、HSLink-Lite 适配与 USB 重连陷阱"
+  default_prompt: "使用 $bringup-hpm5301-debugger 核对芯片、板型、镜像布局和现有授权，完成调试器排查或恢复并记录验证边界。"

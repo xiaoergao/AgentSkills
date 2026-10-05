@@ -1,5 +1,9 @@
 # DPI and Rendering
 
+## Scope
+
+Inherits [build-scottplot-wpf](../SKILL.md): Windows WPF, ScottPlot 5 and compatible SkiaSharp. All package, rendering and DPI examples below require checking the target's pinned versions and actual canvas behavior; they do not apply verbatim to ScottPlot 4 or other renderers. Example versions and sample sizes are not upgrade mandates or transferable performance results.
+
 ## Contents
 
 - Package and target framework

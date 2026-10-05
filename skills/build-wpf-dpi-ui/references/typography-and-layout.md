@@ -1,5 +1,9 @@
 # Typography and layout baseline
 
+## Scope
+
+Inherits [build-wpf-dpi-ui](../SKILL.md). Every numeric role below is a project-specific audited example from the source/date stated next, not a universal font standard or a new test result. Applies to WPF layout; exclude CSS/DOM and recheck localization, accessibility and monitor scaling in each target product.
+
 This baseline was audited from the current `Lk.Acquisition.App` WPF UI in `PS5_Vibration` on 2026-08-16. It captures the working hierarchy; adapt names and values to the target product instead of forcing every interface to look identical.
 
 ## Audited font roles

@@ -1,5 +1,9 @@
 # .NET application build and publish rules
 
+## Scope
+
+Every rule below concerns SDK-style .NET application delivery using the target repository's framework, RID and deployment policy. Desktop/native/service checks are conditional on that product. Excludes non-.NET and NuGet package publication; no particular SDK, operating environment or deliverable is certified by this rule document alone.
+
 Copy or merge this section into a .NET application's `AGENTS.md`. It is a behavioral engineering rule, not a Codex command-permission `.rules` file. It applies only to SDK-style .NET application development and delivery, not to non-.NET projects or NuGet package publication.
 
 ## .NET application build and publish rules

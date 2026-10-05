@@ -5,6 +5,10 @@ description: Build, test, publish, and verify SDK-style .NET applications throug
 
 # Build and Publish a .NET App
 
+## Scope
+
+Applies to SDK-style .NET application build/test/publish workflows, with framework and RID selected by the target repository. All guidance below inherits this scope; native packaging and UI checks apply only when that deliverable uses them. Excludes non-.NET builds and NuGet package publication. This workflow does not certify a particular application, SDK version or deployment environment without its own validation.
+
 Treat the repository as the authority for product boundaries, commands, target frameworks, runtimes, and artifact locations. Prefer its checked-in build, test, and publish scripts over reconstructed `dotnet` commands.
 
 ## Workflow

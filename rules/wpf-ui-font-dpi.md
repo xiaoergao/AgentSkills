@@ -1,5 +1,9 @@
 # WPF UI font and DPI rules
 
+## Scope
+
+All rules below apply to Windows WPF native controls and explicitly identified physical-pixel canvas boundaries. Excludes WebView2 CSS/DOM, WinForms and other frameworks. Specific font families require availability/glyph checks, and canvas scaling requires the renderer's actual contract. Verification steps are required checks for a target change, not a claim that every target has already passed.
+
 Copy or merge this section into the target repository's `AGENTS.md`. It is a behavioral implementation rule, not a Codex command-permission `.rules` file.
 
 ## WPF UI font and DPI rules

@@ -5,6 +5,10 @@ description: Organize Windows WPF/WebView2 desktop projects that embed an ASP.NE
 
 # Organize a Windows Desktop + Web Project
 
+## Scope
+
+All steps below apply only to the architecture profile described next: a Windows WPF/WebView2 shell, embedded ASP.NET Core backend, Web frontend, local SQLite and whole-folder delivery. They exclude standalone servers, other desktop frameworks and embedded firmware. This scope clarification adds no new build or runtime validation; concrete versions and delivery results must come from the target project.
+
 Apply this architecture profile only after confirming the project uses a WPF/WebView2 shell, an in-process ASP.NET Core backend, Web assets and local SQLite, and the user wants a copyable application folder. .NET 10, Vue 3 and Windows x64 are one validated example, not an instruction to upgrade or retarget an unrelated project.
 
 Read [the project rules](references/project-rules.md) when adopting or changing the directory layout. They can be adapted into the target repository's `AGENTS.md`.
