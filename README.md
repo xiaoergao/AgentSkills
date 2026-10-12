@@ -14,7 +14,7 @@
 | WPF 中使用 ScottPlot | [build-scottplot-wpf](skills/build-scottplot-wpf/SKILL.md) | 按 Skill 所支持的 ScottPlot 版本选择；不自动用于其他图表库 |
 | HPM6E00 TSW + RTL8211F，USB RNDIS/ETH 双接口，交换机停滞、千兆协商与多板身份 | [bringup-hpm6e-network](skills/bringup-hpm6e-network/SKILL.md)、[逐项经验](skills/bringup-hpm6e-network/references/lessons.md)、[调试过程](skills/bringup-hpm6e-network/references/case-study.md) | 实测为 HPM6E8Y 自制板、SDK 1.13.0、FreeRTOS/lwIP、RAM 固件；不是其他 MAC/PHY 的寄存器模板，也不代表 EtherCAT 或千兆吞吐量验收 |
 | HPM5301IEG1 板载调试器，UART ISP、HSLink-Lite 适配和 USB 重连 | [bringup-hpm5301-debugger](skills/bringup-hpm5301-debugger/SKILL.md)、[陷阱及过程](skills/bringup-hpm5301-debugger/references/lessons-and-case.md) | 实测为该自制板、HSLink-Lite 2.4.7 本板 r2；不直接用于其他板型、UF2 或主控外部 Flash |
-| HPM6E80 独立FreeRTOS双核AMP、CPU1运动/PDO和CPU0网络、次核装载与性能对照 | [bringup-hpm6e-amp](skills/bringup-hpm6e-amp/SKILL.md)、[双核踩坑提醒](skills/bringup-hpm6e-amp/references/lessons.md)、[性能与边界](skills/bringup-hpm6e-amp/references/performance.md)、[可选规则](rules/hpm6e-amp-release.md) | 实测HPM6E8Y/SDK1.13.0、0.25.1-amp、两台SV660N；地址仅本型号，不能推广SMP/其他SoC或八轴/带载/长期稳定结论；新单核A/B尚待调试器恢复 |
+| HPM6E80 独立FreeRTOS双核AMP、CPU1运动/PDO和CPU0网络、次核装载与性能对照 | [bringup-hpm6e-amp](skills/bringup-hpm6e-amp/SKILL.md)、[双核踩坑提醒](skills/bringup-hpm6e-amp/references/lessons.md)、[性能与边界](skills/bringup-hpm6e-amp/references/performance.md)、[可选规则](rules/hpm6e-amp-release.md) | 实测HPM6E8Y/SDK1.13.0、0.25.1-amp、两台SV660N；地址仅本型号，不能推广SMP/其他SoC或八轴/带载/长期稳定结论；三版本同脚本两轴实测已完成，局部规划中位数快1.95～2.23倍；不等于UDP吞吐或全局最坏实时性同比提高 |
 | Go 后端、Electron/Tauri、纯 Web、云端数据库、容器、嵌入式固件等 | 当前没有对应的工程组织规则 | 保留项目原约定；不要套用 Windows 桌面 APP 目录和 SQLite 便携规则 |
 
 ## 组合与优先级
