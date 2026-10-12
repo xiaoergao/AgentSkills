@@ -1,0 +1,4 @@
+interface:
+  display_name: "HPM6E AMP 双核联调"
+  short_description: "核对次核装载、共享内存和启动时序，开展有证据的双核运动性能验收"
+  default_prompt: "Use $bringup-hpm6e-amp to audit this HPM6E dual-core motion firmware and verify its loading, IPC and performance evidence."
