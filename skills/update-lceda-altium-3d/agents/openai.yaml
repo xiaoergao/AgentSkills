@@ -1,0 +1,4 @@
+interface:
+  display_name: "立创PCB补全Altium 3D"
+  short_description: "逐元件绑定共享3D模型，校准高度并控制Altium文件体积"
+  default_prompt: "使用 $update-lceda-altium-3d，根据立创PCB、Altium导出文件和STEP模型生成可逐元件编辑3D的Altium PCB。"

@@ -8,6 +8,7 @@
 
 | 项目或任务 | 选择 | 适用边界 |
 | --- | --- | --- |
+| 立创 PCB/Altium 导出缺少 3D、正面元件悬空、整板模型无法逐件编辑、模型体积过大 | [update-lceda-altium-3d](skills/update-lceda-altium-3d/SKILL.md)、[坐标与脚本](skills/update-lceda-altium-3d/references/workflow.md)、[案例与限制](skills/update-lceda-altium-3d/references/case-study.md) | 匹配的 LCEDA Altium PcbDoc 和可按位号识别的 STEP；Windows/AD 原生绑定，按封装共享几何；不从截图恢复电气设计，不强制 KiCad 转换，预览高度及最终画面需分别确认 |
 | SDK 风格 .NET 应用的构建、测试、发布 | [构建发布规则](rules/dotnet-build-publish.md)、[build-publish-dotnet-app](skills/build-publish-dotnet-app/SKILL.md) | WPF、WinForms、控制台、Worker、ASP.NET；不适用于非 .NET 工程或 NuGet 包发布 |
 | Windows WPF/WebView2 桌面内嵌 ASP.NET Core，Web 前端，SQLite；整理源码、临时目录及可复制 APP | [organize-windows-desktop-web](skills/organize-windows-desktop-web/SKILL.md)、[专用工程规则](skills/organize-windows-desktop-web/references/project-rules.md) | 整体文件夹交付的单机桌面架构；不是独立服务器或所有 .NET 项目的默认布局 |
 | WPF 原生界面的字体、布局及 DPI | [WPF 规则](rules/wpf-ui-font-dpi.md)、[build-wpf-dpi-ui](skills/build-wpf-dpi-ui/SKILL.md) | WPF 控件及其渲染边界；不把 WPF DIP 规则套用到 WebView2 的 CSS/DOM |

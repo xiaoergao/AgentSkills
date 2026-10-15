@@ -1,0 +1,68 @@
+Var B:IPCB_Board; D:IServerDocument; Log:TStringList; Failed:Boolean;
+Procedure Stage(S:String);
+Begin Log.Add(S);Log.SaveToFile('@LOG@');End;
+Function ClearBodies:Boolean;
+Var It:IPCB_BoardIterator; Body:IPCB_ComponentBody; C:IPCB_Component;
+    Items:Array[0..9999] Of IPCB_ComponentBody; Count,I:Integer;
+Begin
+ Result:=False;Count:=0;
+ It:=B.BoardIterator_Create;It.AddFilter_ObjectSet(MkSet(eComponentBodyObject));
+ It.AddFilter_LayerSet(AllLayers);It.AddFilter_Method(eProcessAll);
+ Body:=It.FirstPCBObject;
+ While Body<>Nil Do Begin
+  If Count=10000 Then Begin B.BoardIterator_Destroy(It);Stage('TOO_MANY_EXISTING_BODIES');Exit;End;
+  Items[Count]:=Body;Count:=Count+1;Body:=It.NextPCBObject;
+ End;
+ B.BoardIterator_Destroy(It);
+ If (Count>0) And (@REPLACE@=0) Then Begin Stage('EXISTING_BODIES_NOT_REPLACED');Exit;End;
+ If Count>0 Then Begin
+  PCBServer.PreProcess;
+  Try
+   For I:=0 To Count-1 Do Begin
+    Body:=Items[I];C:=Body.Component;
+    If C<>Nil Then C.RemovePCBObject(Body);
+    B.RemovePCBObject(Body);
+   End;
+  Finally PCBServer.PostProcess;End;
+  Stage('REMOVED_BODIES '+IntToStr(Count));
+ End;
+ Result:=True;
+End;
+Procedure Attach(RefName,ModelFile:String;RX,RZ:Double;DZ:Integer);
+Var It:IPCB_BoardIterator;C:IPCB_Component;Body:IPCB_ComponentBody;M:IPCB_Model;
+Begin
+ It:=B.BoardIterator_Create;It.AddFilter_ObjectSet(MkSet(eComponentObject));
+ It.AddFilter_LayerSet(AllLayers);It.AddFilter_Method(eProcessAll);
+ C:=It.FirstPCBObject;
+ While C<>Nil Do Begin If C.Name.Text=RefName Then Break;C:=It.NextPCBObject;End;
+ B.BoardIterator_Destroy(It);
+ If C=Nil Then Begin Stage('MISSING_COMPONENT '+RefName);Failed:=True;Exit;End;
+ Body:=PCBServer.PCBObjectFactory(eComponentBodyObject,eNoDimension,eCreate_Default);
+ M:=Body.ModelFactory_FromFilename('@MODELS@\'+ModelFile,False);
+ If M=Nil Then Begin Stage('MODEL_LOAD_FAILED '+RefName);Failed:=True;Exit;End;
+ M.SetState(RX,0,RZ,DZ);Body.SetState_FromModel;Body.Model:=M;
+ Body.Layer:=eMechanical13;Body.MoveByXY(C.X,C.Y);
+ PCBServer.PreProcess;
+ Try
+  B.AddPCBObject(Body);C.AddPCBObject(Body);
+  PCBServer.SendMessageToRobots(C.I_ObjectAddress,c_Broadcast,PCBM_BoardRegisteration,Body.I_ObjectAddress);
+ Finally PCBServer.PostProcess;End;
+ Stage('BOUND '+RefName);
+End;
+Procedure BuildModels;
+Var Saved:Boolean;
+Begin
+ Failed:=False;Log:=TStringList.Create;
+ Try
+  Stage('START');D:=Client.OpenDocument('PCB','@SOURCE@');
+  If D=Nil Then Begin Stage('OPEN_FAILED');Exit;End;
+  Client.ShowDocument(D);B:=PCBServer.GetCurrentPCBBoard;
+  If B=Nil Then Begin Stage('BOARD_FAILED');Exit;End;
+  If Not ClearBodies Then Exit;
+@ATTACH@
+  If Failed Then Begin Stage('BINDING_INCOMPLETE_NO_FINAL_SAVE');Exit;End;
+  B.ViewManager_FullUpdate;D.SetFileName('@TARGET@');
+  Saved:=D.DoFileSave('PCB Binary');
+  If Saved Then Stage('SAVED') Else Stage('SAVE_FAILED');
+ Finally Log.Free;End;
+End;
