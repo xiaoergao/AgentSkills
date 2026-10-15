@@ -1,0 +1,4 @@
+interface:
+  display_name: "模块排针与母板排母装配"
+  short_description: "核对现有封装引脚原点，在副本中放置模块排针及母板排母模型"
+  default_prompt: "使用 $assemble-module-connectors-3d 核对模块封装映射并设置排针、排母与板间距，不改焊盘。"

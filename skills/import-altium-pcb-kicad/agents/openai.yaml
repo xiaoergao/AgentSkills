@@ -1,0 +1,4 @@
+interface:
+  display_name: "AD PCB导入KiCad"
+  short_description: "冻结最新PCB输入并调用KiCad原生导入，核对错误报告与源哈希"
+  default_prompt: "使用 $import-altium-pcb-kicad 导入指定修订的Altium PCB，保留输入快照和导入报告。"

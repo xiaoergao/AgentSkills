@@ -8,6 +8,12 @@
 
 | 项目或任务 | 选择 | 适用边界 |
 | --- | --- | --- |
+| AD PCB 修订后重新导入 KiCad | [import-altium-pcb-kicad](skills/import-altium-pcb-kicad/SKILL.md) | 单个 PcbDoc 快照、原生导入与错误报告；不重建封装 |
+| 从 KiCad 导出上下丝印、外层走线/焊盘、阻焊，隐藏过孔 | [export-kicad-outer-3d](skills/export-kicad-outer-3d/SKILL.md) | 只改导出副本；不包含内层铜，不在本步骤应用透明度 |
+| 模块排针向下、底板排母向上，配准已有库焊盘 | [assemble-module-connectors-3d](skills/assemble-module-connectors-3d/SKILL.md) | 已核对双排连接器编号/尺寸，按多个焊盘求共同原点；不改实际生产 PCB |
+| 仅阻焊半透明，其余器件不透明 | [prepare-step-soldermask](skills/prepare-step-soldermask/SKILL.md) | 命名 XCAF STEP 拆主总成与上下阻焊，使用实测安装 Z |
+| 仅给已有 PcbLib 封装添加/替换 3D 或调整阻焊透明度 | [attach-step-altium-footprint](skills/attach-step-altium-footprint/SKILL.md) | 原生 AD 创建记录、逐流合并；焊盘、原点和其他封装不变 |
+| 模块原理图引脚 Name 与主芯片完整复用功能名称一致 | [build-altium-module-symbol](skills/build-altium-module-symbol/SKILL.md) | LCEDA 符号+网表追溯；模块焊盘编号保留；支持空白草稿构建及后续只改 Name |
 | 立创 PCB/Altium 导出缺少 3D、正面元件悬空、整板模型无法逐件编辑、模型体积过大 | [update-lceda-altium-3d](skills/update-lceda-altium-3d/SKILL.md)、[坐标与脚本](skills/update-lceda-altium-3d/references/workflow.md)、[案例与限制](skills/update-lceda-altium-3d/references/case-study.md) | 匹配的 LCEDA Altium PcbDoc 和可按位号识别的 STEP；Windows/AD 原生绑定，按封装共享几何；不从截图恢复电气设计，不强制 KiCad 转换，预览高度及最终画面需分别确认 |
 | SDK 风格 .NET 应用的构建、测试、发布 | [构建发布规则](rules/dotnet-build-publish.md)、[build-publish-dotnet-app](skills/build-publish-dotnet-app/SKILL.md) | WPF、WinForms、控制台、Worker、ASP.NET；不适用于非 .NET 工程或 NuGet 包发布 |
 | Windows WPF/WebView2 桌面内嵌 ASP.NET Core，Web 前端，SQLite；整理源码、临时目录及可复制 APP | [organize-windows-desktop-web](skills/organize-windows-desktop-web/SKILL.md)、[专用工程规则](skills/organize-windows-desktop-web/references/project-rules.md) | 整体文件夹交付的单机桌面架构；不是独立服务器或所有 .NET 项目的默认布局 |
@@ -19,6 +25,8 @@
 | Go 后端、Electron/Tauri、纯 Web、云端数据库、容器、嵌入式固件等 | 当前没有对应的工程组织规则 | 保留项目原约定；不要套用 Windows 桌面 APP 目录和 SQLite 便携规则 |
 
 ## 组合与优先级
+
+PCB 库增量修改按 [独立步骤与验证边界](rules/pcb-library-incremental-workflow.md) 选择：改丝印从导入开始；只改透明度直接改 Body；只改引脚 Name 保留符号位置；只换模型保留所有焊盘。每一步都有单独脚本与新输出，不必重做整条流程。
 
 1. 先读目标项目的 `AGENTS.md`、构建脚本和发布约定，确认实际架构及用户要求。
 2. 通用 .NET 构建 Skill 可以与架构专用组织 Skill 组合。专用配置采用 `src` / `scripts` / `temp` / `artifacts/app` 时，通用规则中的“生成物树”表示这些受忽略的指定输出位置，不要求把临时目录重新放回 `artifacts`。

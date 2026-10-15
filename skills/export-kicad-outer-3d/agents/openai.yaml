@@ -1,0 +1,4 @@
+interface:
+  display_name: "KiCad外层图形导出3D"
+  short_description: "按需导出双面走线、焊盘、丝印和阻焊，在副本中隐藏过孔"
+  default_prompt: "使用 $export-kicad-outer-3d 导出当前KiCad PCB的双面外层图形，不修改源PCB。"

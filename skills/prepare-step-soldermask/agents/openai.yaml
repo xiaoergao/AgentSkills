@@ -1,0 +1,4 @@
+interface:
+  display_name: "拆分 STEP 阻焊层"
+  short_description: "拆分独立阻焊几何与不透明总成，按安装基准设置高度和透明度配方"
+  default_prompt: "使用 $prepare-step-soldermask 拆分 STEP 中的阻焊与不透明总成，保留颜色并记录实测安装高度。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "更新 Altium 封装 3D"
+  short_description: "只更新指定封装的内嵌模型与透明度，保留焊盘、原点和其他封装"
+  default_prompt: "使用 $attach-step-altium-footprint 更新指定封装的内嵌 3D，保持其他库数据与全部焊盘不变。"

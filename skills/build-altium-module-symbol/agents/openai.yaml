@@ -1,0 +1,4 @@
+interface:
+  display_name: "制作模块原理图符号"
+  short_description: "从立创工程提取主控完整复用功能名称，保留模块焊盘编号与封装关联"
+  default_prompt: "使用 $build-altium-module-symbol 核对模块接口和 MCU 引脚，制作或只更新原理图符号的完整 Name。"
