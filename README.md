@@ -8,6 +8,7 @@
 
 | 项目或任务 | 选择 | 适用边界 |
 | --- | --- | --- |
+| 在线嘉立创 EDA API 联动、工程复制、原理图整理和 PCB 分区布局 | [design-jlceda-online](skills/design-jlceda-online/SKILL.md)、[原理图风格](skills/design-jlceda-online/references/schematic-style.md)、[PCB 与器件](skills/design-jlceda-online/references/pcb-and-components.md) | 专业版在线编辑器及 API Gateway/Bridge；按用户 CH1 样板采用紧凑实线连接和专用电源符号，校验工程身份与网表；不替代电气、EMC 或制造验收 |
 | 工业机台感应器/气缸等待超时、放入未到位、异常后自动复位、暂停续动及严重硬件故障 | [industrial-machine-recovery](skills/industrial-machine-recovery/SKILL.md)、[恢复协议与验收](skills/industrial-machine-recovery/references/recovery-protocol.md)、[锡膏机现场案例与边界](skills/industrial-machine-recovery/references/solder-placement-case.md) | 真实 PLC/LabVIEW/上位机顺序控制；警告保留 Deep State、严重故障锁存，必须新人工请求才允许恢复；不替代安全回路，案例 5 秒不作为通用值 |
 | AD PCB 修订后重新导入 KiCad | [import-altium-pcb-kicad](skills/import-altium-pcb-kicad/SKILL.md) | 单个 PcbDoc 快照、原生导入与错误报告；不重建封装 |
 | 从 KiCad 导出上下丝印、外层走线/焊盘、阻焊，隐藏过孔 | [export-kicad-outer-3d](skills/export-kicad-outer-3d/SKILL.md) | 只改导出副本；不包含内层铜，不在本步骤应用透明度 |

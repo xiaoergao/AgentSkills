@@ -1,0 +1,4 @@
+interface:
+  display_name: "在线嘉立创 EDA 协同设计"
+  short_description: "通过 API 整理原理图、布局 PCB，并保留用户确认的紧凑电路风格"
+  default_prompt: "使用 $design-jlceda-online，通过 API 检查目标工程，按我的样板整理原理图和 PCB，并核对修改前后的连接关系。"
