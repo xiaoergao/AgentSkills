@@ -16,6 +16,7 @@ description: 使用嘉立创 EDA 专业版在线编辑器及 API Gateway/本机 
 - 连接、复制工程、API 调用及故障恢复：[api-and-projects.md](references/api-and-projects.md)。
 - 原理图整理、用户样板复用、核心板符号：[schematic-style.md](references/schematic-style.md)。
 - PCB 分区、连接器、器件选型和 3D：[pcb-and-components.md](references/pcb-and-components.md)。
+- 重复通道紧凑布局、RS485/DI 样板及 DO 迁移：[compact-channel-layout.md](references/compact-channel-layout.md)。中心思想是优先减小单通道垂直占用，利用左右空间，在焊盘净距、本体和实际布线约束内缩小行距。
 - 历史证据与不能外推的结论：[verified-lessons.md](references/verified-lessons.md)。
 
 ## 执行流程
